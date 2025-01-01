@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dompet'Q</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1 class="logo-title">
+            <img src="{{ url_for('static', filename='logo.png') }}" alt="Logo" class="logo">
+        </h1>
+        
+        {% with messages = get_flashed_messages() %}
+        {% if messages %}
+            <div class="flash-messages">
+                {% for message in messages %}
+                    <p>{{ message }}</p>
+                {% endfor %}
+            </div>
+        {% endif %}
+        {% endwith %}
+
+        <!-- Form untuk menambahkan catatan -->
+        <form action="{{ url_for('add') }}" method="POST">
+            <div class="form-group">
+                <label for="jenis">Jenis:</label>
+                <div class="custom-dropdown">
+                    <select name="jenis" id="jenis" required>
+                        <option value="Pemasukan">Pemasukan</option>
+                        <option value="Pengeluaran">Pengeluaran</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="jumlah">Jumlah:</label>
+                <input type="text" name="jumlah" id="jumlah" required>
+            </div>
+
+            <div class="form-group">
+                <label for="deskripsi">Deskripsi:</label>
+                <input type="text" name="deskripsi" id="deskripsi" required>
+            </div>
+
+            <button type="submit">Tambah Catatan</button>
+        </form>
+
+        <!-- Informasi total keuangan -->
+        <h2>Total Pemasukan: Rp {{ total_pemasukan | format_jumlah }}</h2>
+        <h2>Total Pengeluaran: Rp {{ total_pengeluaran | format_jumlah }}</h2>
+        <h2>Saldo: Rp {{ Saldo | format_jumlah }}</h2>
+
+        <!-- Tabel untuk catatan keuangan -->
+        <h2>Catatan Keuangan</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>No</th>
+                    <th>Tanggal</th>
+                    <th>Jenis</th>
+                    <th>Jumlah</th>
+                    <th>Deskripsi</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% if histori %}
+                    {% for catatan in histori %}
+                        <tr class="{% if catatan[2] == 'Pemasukan' %}green-row{% elif catatan[2] == 'Pengeluaran' %}red-row{% endif %}">
+                            <td>{{ catatan[0] }}</td>
+                            <td>{{ catatan[1] }}</td>
+                            <td>{{ catatan[2] }}</td>
+                            <td>Rp {{ catatan[3] | format_jumlah }}</td>
+                            <td>{{ catatan[4] }}</td>
+                        </tr>
+                    {% endfor %}
+                {% else %}
+                    <tr>
+                        <td colspan="5">Tidak ada catatan.</td>
+                    </tr>
+                {% endif %}
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>

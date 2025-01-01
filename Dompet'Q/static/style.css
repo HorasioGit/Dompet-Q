@@ -1,0 +1,161 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #e3f2fd; /* Warna biru lembut */
+    padding: 20px;
+}
+
+.container {
+    max-width: 800px;
+    margin: 0 auto;
+    background-color: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+h1 {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px; /* Spasi antara logo dan teks */
+    margin-bottom: 20px;
+    font-size: 24px;
+}
+
+h2 {
+    margin-top: 10px;
+    color: black;
+    background-color: rgba(255, 255, 255, 0.8); /* Latar putih dengan transparansi */
+    padding: 5px;
+    border-radius: 5px;
+}
+
+form {
+    margin-bottom: 20px;
+}
+
+.form-group {
+    margin-bottom: 15px;
+}
+
+label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold; /* Menonjolkan label */
+}
+
+input, select {
+    width: 100%;
+    padding: 10px;
+    margin-top: 5px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 16px;
+}
+
+button {
+    width: 100%;
+    padding: 10px;
+    background-color: #0056b3;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+button:hover {
+    background-color: #003f7f;
+}
+
+table {
+    width: 100%;
+    margin-top: 20px;
+    border-collapse: collapse;
+}
+
+table, th, td {
+    border: 1px solid #ddd;
+}
+
+th, td {
+    padding: 12px;
+    text-align: left;
+    font-size: 14px;
+}
+
+th {
+    background-color: #bbdefb; /* Warna biru terang */
+    color: #003f7f; /* Teks biru tua */
+}
+
+.green-row {
+    background-color: #e7fbe7; /* Hijau terang */
+}
+
+.red-row {
+    background-color: #fde7e7; /* Merah terang */
+}
+
+.flash-messages {
+    background-color: #ffeeba;
+    border: 1px solid #ffdd57;
+    padding: 10px;
+    margin-bottom: 15px;
+    border-radius: 5px;
+    color: #856404;
+    font-weight: bold;
+    text-align: center;
+}
+
+.logo {
+    width: 150px; /* Ukuran logo lebih kecil */
+    height: 150px;
+    object-fit: contain; /* Gambar tetap proporsional */
+}
+
+/* Custom Dropdown */
+.custom-dropdown {
+    position: relative;
+    width: 100%;
+}
+
+.custom-dropdown select {
+    width: 100%;
+    padding: 10px;
+    background-color: #f8f9fa;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    appearance: none; /* Menghapus tampilan default dropdown */
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.custom-dropdown::after {
+    content: "▼"; /* Menambahkan panah dropdown */
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 20px;
+    color: #0056b3; /* Warna untuk panah */
+    pointer-events: none; /* Membuat panah tidak interaktif */
+}
+
+.custom-dropdown select:focus {
+    border-color: #0056b3;
+    box-shadow: 0 0 5px rgba(0, 86, 179, 0.5);
+}
+
+.custom-dropdown select option {
+    background-color: white;
+}
